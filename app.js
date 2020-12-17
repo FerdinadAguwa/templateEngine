@@ -10,7 +10,68 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const response = [
+    {
+        type: 'input',
+        message: "What is your manager's name?",
+        name: 'name',
+    },
+    {
+        type: 'input',
+        message: "Whats is your managers id",
+        name: 'id',
+    },
 
+    {
+        type: 'list',
+        message: 'Which license did you use for your project?',
+        name: 'license',
+        choices: ["MIT","GPL","Apache", ""]
+       
+    },
+    {
+        type: 'input',
+        message: 'What are some steps required to install your project?',
+        name: 'installation',
+    },
+    {
+        type: 'input',
+        message: 'List your collaborators, if any, with links to their GitHub profiles.',
+        name: 'collaboration',
+        default: "n/a",
+    },
+
+    {
+        type: 'input',
+        message: 'List all languages',
+        name: 'languages',
+    },
+    {
+        type: 'list',
+        message: 'What frameworks did you use?',
+        name: 'frameworks',
+        choices: ["Visual Studio Code","Nodepad++","UltraEdit", ""]
+    },
+    {
+        type: 'input',
+        message: 'Developers Name:',
+        name: 'developer',
+    },
+    {
+        type: 'input',
+        message: "Github Username:",
+        name: 'gitHub',
+    },
+    {
+        type: 'input',
+        message: "Email:",
+        name: 'email',
+    },
+
+]
+inquirer.prompt(response).then(function () {
+
+}
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
