@@ -1,0 +1,33 @@
+body{
+    background-color: black;
+}
+
+
+.team-heading{
+    background-image: url(photo/8bbe531b7440429d5a20124cd91ec2eb.jpg);
+    -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;  
+    color: black;
+    object-fit: cover;
+
+    outline: 3px solid black;
+    font-weight: bold;
+    text-align: -webkit-center;
+
+}
+.text-center{
+    background-color: white;
+    outline: black;
+    width:fit-content;
+    border: 2px solid black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.card{
+    margin-right: 30px;
+}
