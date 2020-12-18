@@ -77,7 +77,13 @@ const internResponse = [
     {
         type: 'input',
         message: "Whats is the name of your school?",
-        name: 'officeNumber',
+        name: 'school',
+    },
+    {
+        type: 'list',
+        message: "Who is on your team?",
+        name: 'job',
+        choices: ["Engineer", "Intern","I dont want anymore team members "]
     },
 ]
 // engineer response
@@ -102,7 +108,7 @@ const engineerResponse = [
     {
         type: 'input',
         message: "Whats is your Github email?",
-        name: 'officeNumber',
+        name: 'github',
     },
     {
         type: 'list',
