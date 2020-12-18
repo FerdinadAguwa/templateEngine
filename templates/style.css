@@ -1,0 +1,29 @@
+body{
+    background-color: black;
+}
+
+
+.team-heading{
+    background-image: url(photo/colorful-mixed-seamless-pattern-vector-set_53876-81253.jpg);
+    -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;  
+    color: black;
+    object-fit: cover;
+
+    outline: 3px solid black;
+    font-weight: bold;
+    text-align: -webkit-center;
+
+}
+.text-center{
+    background-color: white;
+    outline: black;
+    width:fit-content;
+    border: 2px solid black;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
