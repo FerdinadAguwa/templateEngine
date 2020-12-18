@@ -131,6 +131,7 @@ function engineerEngineer(){
 function internIntern(){
     inquirer.prompt(internResponse).then(function(answer){
         console.log(answer)
+        const intern = new Intern(answer.name, answer.email, answer.id, answer.school)
       whichJob(answer.job)
 
 
