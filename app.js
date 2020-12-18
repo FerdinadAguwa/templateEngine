@@ -10,68 +10,124 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-const response = [
+
+
+// manager question
+const managerResponse = [
     {
         type: 'input',
-        message: "What is your manager's name?",
+        message: "What is your name?",
         name: 'name',
     },
     {
         type: 'input',
-        message: "Whats is your managers id",
-        name: 'id',
+        message: "Whats is your email?",
+        name: 'email',
     },
 
     {
-        type: 'list',
-        message: 'Which license did you use for your project?',
-        name: 'license',
-        choices: ["MIT","GPL","Apache", ""]
+        type: 'input',
+        message: "Whats is your id?",
+        name: 'id',
        
     },
     {
         type: 'input',
-        message: 'What are some steps required to install your project?',
-        name: 'installation',
-    },
-    {
-        type: 'input',
-        message: 'List your collaborators, if any, with links to their GitHub profiles.',
-        name: 'collaboration',
-        default: "n/a",
-    },
-
-    {
-        type: 'input',
-        message: 'List all languages',
-        name: 'languages',
+        message: "Whats is your office number?",
+        name: 'officeNumber',
     },
     {
         type: 'list',
-        message: 'What frameworks did you use?',
-        name: 'frameworks',
-        choices: ["Visual Studio Code","Nodepad++","UltraEdit", ""]
+        message: "Who is on your team?",
+        name: 'job',
+        choices: ["Engineer", "Intern","I dont want anymore team members "]
+    },
+]
+// intern responses
+const internResponse = [
+    {
+        type: 'input',
+        message: "What is your name?",
+        name: 'name',
     },
     {
         type: 'input',
-        message: 'Developers Name:',
-        name: 'developer',
-    },
-    {
-        type: 'input',
-        message: "Github Username:",
-        name: 'gitHub',
-    },
-    {
-        type: 'input',
-        message: "Email:",
+        message: "Whats is your email?",
         name: 'email',
     },
 
+    {
+        type: 'input',
+        message: "Whats is your id?",
+        name: 'id',
+       
+    },
+    {
+        type: 'input',
+        message: "Whats is the name of your school?",
+        name: 'officeNumber',
+    },
 ]
-inquirer.prompt(response).then(function () {
+// engineer response
+const engineerResponse = [
+    {
+        type: 'input',
+        message: "What is your name?",
+        name: 'name',
+    },
+    {
+        type: 'input',
+        message: "Whats is your email?",
+        name: 'email',
+    },
 
-}
+    {
+        type: 'input',
+        message: "Whats is your id?",
+        name: 'id',
+       
+    },
+    {
+        type: 'input',
+        message: "Whats is your Github email?",
+        name: 'officeNumber',
+    },
+]
+inquirer.prompt(managerResponse).then(function (answer) {
+    console.log (answer)
+    jobChoice = answer.job;
+
+if(jobChoice === "Engineer"){
+    console.log("ask engineer questions")
+    inquirer.prompt(engineerResponse).then(function(answer){
+        console.log(answer)
+
+    })
+}   
+        
+
+      
+    
+
+
+});
+
+
+
+
+
+
+   
+    
+    
+
+
+
+
+
+
+
+
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
