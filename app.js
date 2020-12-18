@@ -151,7 +151,7 @@ function whichJob(job){
     else if (job === "I dont want anymore team members "){
         fs.writeFile(outputPath, render(employee), (err) => {
             if (err) throw err;
-            console.log('The file has been saved!');
+            console.log('Your team has been created!');
         });
     }
 
