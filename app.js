@@ -121,6 +121,8 @@ const engineerResponse = [
 function engineerEngineer(){
     inquirer.prompt(engineerResponse).then(function(answer){
         console.log(answer)
+        const engineer = new Engineer(answer.name,answer.email,answer.id,answer.github)
+        employee.push(engineer)
       whichJob(answer.job)
 
 
