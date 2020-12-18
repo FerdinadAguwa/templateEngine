@@ -120,11 +120,27 @@ function engineerEngineer(){
 
     })
 }   
+function internIntern(){
+    inquirer.prompt(internResponse).then(function(answer){
+        console.log(answer)
+      whichJob(answer.job)
+
+
+    })
+}  
+
+
+
+
 
 function whichJob(job){
     if(job === "Engineer"){
         console.log("ask engineer questions")
      engineerEngineer()
+    }
+    else if (job === "Intern") {
+        console.log("ask intern questions")
+        internIntern()
     }
     else if (job === "I dont want anymore team members "){
         fs.writeFile(outputPath, render(employee), (err) => {
