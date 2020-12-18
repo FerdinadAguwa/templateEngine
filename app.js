@@ -4,7 +4,7 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-const employee = [] 
+const employee = []
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
@@ -13,18 +13,19 @@ const render = require("./lib/htmlRenderer");
 
 
 
-// manager question
+// /function to start the entire process
 
-function start(){
+function start() {
     inquirer.prompt(managerResponse).then(function (answer) {
-    console.log (answer)
-    
-    const manager = new Manager(answer.name,answer.email,answer.id,answer.officeNumber);
+        console.log(answer)
+
+        const manager = new Manager(answer.name, answer.email, answer.id, answer.officeNumber);
         employee.push(manager);
         whichJob(answer.job)
 
     })
 }
+// manager questions 
 const managerResponse = [
     {
         type: 'input',
@@ -41,7 +42,7 @@ const managerResponse = [
         type: 'input',
         message: "Whats is your id?",
         name: 'id',
-       
+
     },
     {
         type: 'input',
@@ -52,7 +53,7 @@ const managerResponse = [
         type: 'list',
         message: "Who is on your team?",
         name: 'job',
-        choices: ["Engineer", "Intern","I dont want anymore team members "]
+        choices: ["Engineer", "Intern", "I dont want anymore team members "]
     },
 ]
 // intern responses
@@ -72,7 +73,7 @@ const internResponse = [
         type: 'input',
         message: "Whats is your id?",
         name: 'id',
-       
+
     },
     {
         type: 'input',
@@ -83,7 +84,7 @@ const internResponse = [
         type: 'list',
         message: "Who is on your team?",
         name: 'job',
-        choices: ["Engineer", "Intern","I dont want anymore team members "]
+        choices: ["Engineer", "Intern", "I dont want anymore team members "]
     },
 ]
 // engineer response
@@ -103,7 +104,7 @@ const engineerResponse = [
         type: 'input',
         message: "Whats is your id?",
         name: 'id',
-       
+
     },
     {
         type: 'input',
@@ -114,44 +115,47 @@ const engineerResponse = [
         type: 'list',
         message: "Who is on your team?",
         name: 'job',
-        choices: ["Engineer", "Intern","I dont want anymore team members "]
+        choices: ["Engineer", "Intern", "I dont want anymore team members "]
     },
 ]
-
-function engineerEngineer(){
-    inquirer.prompt(engineerResponse).then(function(answer){
+// function for the engineer questions & responses
+function engineerEngineer() {
+    inquirer.prompt(engineerResponse).then(function (answer) {
         console.log(answer)
-        const engineer = new Engineer(answer.name,answer.email,answer.id,answer.github)
+        const engineer = new Engineer(answer.name, answer.email, answer.id, answer.github)
         employee.push(engineer)
-      whichJob(answer.job)
+        whichJob(answer.job)
 
 
     })
-}   
-function internIntern(){
-    inquirer.prompt(internResponse).then(function(answer){
+
+}
+// function for the intern questions & responses
+function internIntern() {
+    inquirer.prompt(internResponse).then(function (answer) {
         console.log(answer)
         const intern = new Intern(answer.name, answer.email, answer.id, answer.school)
-      whichJob(answer.job)
+        employee.push(intern)
+        whichJob(answer.job)
 
 
     })
-}  
+}
 
 
 
 
 
-function whichJob(job){
-    if(job === "Engineer"){
+function whichJob(job) {
+    if (job === "Engineer") {
         console.log("ask engineer questions")
-     engineerEngineer()
+        engineerEngineer()
     }
     else if (job === "Intern") {
         console.log("ask intern questions")
         internIntern()
     }
-    else if (job === "I dont want anymore team members "){
+    else if (job === "I dont want anymore team members ") {
         fs.writeFile(outputPath, render(employee), (err) => {
             if (err) throw err;
             console.log('Your team has been created!');
@@ -165,20 +169,14 @@ function whichJob(job){
 
 
 
-
-
-
-
-
-
 start();
 
 
 
 
-   
-    
-    
+
+
+
 
 
 
