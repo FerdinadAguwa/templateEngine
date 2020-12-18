@@ -4,6 +4,7 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
+const employee = [] 
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
@@ -13,6 +14,17 @@ const render = require("./lib/htmlRenderer");
 
 
 // manager question
+
+function start(){
+    inquirer.prompt(managerResponse).then(function (answer) {
+    console.log (answer)
+    
+    const manager = new Manager(answer.name,answer.email,answer.id,answer.officeNumber);
+        employee.push(manager);
+        whichJob(answer.job)
+
+    })
+}
 const managerResponse = [
     {
         type: 'input',
@@ -92,27 +104,49 @@ const engineerResponse = [
         message: "Whats is your Github email?",
         name: 'officeNumber',
     },
+    {
+        type: 'list',
+        message: "Who is on your team?",
+        name: 'job',
+        choices: ["Engineer", "Intern","I dont want anymore team members "]
+    },
 ]
-inquirer.prompt(managerResponse).then(function (answer) {
-    console.log (answer)
-    jobChoice = answer.job;
 
-if(jobChoice === "Engineer"){
-    console.log("ask engineer questions")
+function engineerEngineer(){
     inquirer.prompt(engineerResponse).then(function(answer){
         console.log(answer)
+      whichJob(answer.job)
+
 
     })
 }   
-        
 
-      
-    
+function whichJob(job){
+    if(job === "Engineer"){
+        console.log("ask engineer questions")
+     engineerEngineer()
+    }
+    else if (job === "I dont want anymore team members "){
+        fs.writeFile(outputPath, render(employee), (err) => {
+            if (err) throw err;
+            console.log('The file has been saved!');
+        });
+    }
+
+}
 
 
-});
 
 
+
+
+
+
+
+
+
+
+start();
 
 
 
