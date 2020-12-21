@@ -145,7 +145,7 @@ function internIntern() {
 
 
 
-
+//  function to choose which job the user wants 
 function whichJob(job) {
     if (job === "Engineer") {
         console.log("ask engineer questions")
@@ -154,6 +154,7 @@ function whichJob(job) {
     else if (job === "Intern") {
         console.log("ask intern questions")
         internIntern()
+        
     }
     else if (job === "I dont want anymore team members ") {
         fs.writeFile(outputPath, render(employee), (err) => {
@@ -166,7 +167,7 @@ function whichJob(job) {
 
 
 
-
+console.log(employee)
 
 
 start();
