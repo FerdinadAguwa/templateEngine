@@ -154,7 +154,7 @@ function whichJob(job) {
     else if (job === "Intern") {
         console.log("ask intern questions")
         internIntern()
-        
+
     }
     else if (job === "I dont want anymore team members ") {
         fs.writeFile(outputPath, render(employee), (err) => {
