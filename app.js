@@ -17,7 +17,7 @@ const render = require("./lib/htmlRenderer");
 
 function start() {
     inquirer.prompt(managerResponse).then(function (answer) {
-        console.log(answer)
+        // console.log(answer)
 
         const manager = new Manager(answer.name, answer.email, answer.id, answer.officeNumber);
         employee.push(manager);
@@ -29,7 +29,7 @@ function start() {
 const managerResponse = [
     {
         type: 'input',
-        message: "What is your name?",
+        message: "What is your Manager name?",
         name: 'name',
     },
     {
@@ -121,7 +121,7 @@ const engineerResponse = [
 // function for the engineer questions & responses
 function engineerEngineer() {
     inquirer.prompt(engineerResponse).then(function (answer) {
-        console.log(answer)
+        // console.log(answer)
         const engineer = new Engineer(answer.name, answer.email, answer.id, answer.github)
         employee.push(engineer)
         whichJob(answer.job)
@@ -133,7 +133,7 @@ function engineerEngineer() {
 // function for the intern questions & responses
 function internIntern() {
     inquirer.prompt(internResponse).then(function (answer) {
-        console.log(answer)
+        // console.log(answer)
         const intern = new Intern(answer.name, answer.email, answer.id, answer.school)
         employee.push(intern)
         whichJob(answer.job)
@@ -167,7 +167,7 @@ function whichJob(job) {
 
 
 
-console.log(employee)
+// console.log(employee)
 
 
 start();
